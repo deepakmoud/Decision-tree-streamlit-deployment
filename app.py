@@ -38,10 +38,10 @@ def main():
    </div>
    """
     st.markdown(html_temp,unsafe_allow_html=True)
-    UserID = st.text_input("UserID","Type Here")
-    Gender = st.text_input("Gender","Type Here")
-    Age = st.text_input("Age","Type Here")
-    EstimatedSalary = st.text_input("EstimatedSalary","Type Here")
+    UserID = st.text_input("UserID","")
+    Gender = st.selectbox('Gender',('Male', 'Female'))
+    Age = st.number_input("Insert Age",18,60)
+    EstimatedSalary = st.number_input("Insert salary",15000,150000)
     resul=""
     if st.button("Predict"):
       result=predict_note_authentication(UserID, Gender,Age,EstimatedSalary)
