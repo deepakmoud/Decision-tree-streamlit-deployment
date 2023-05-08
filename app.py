@@ -14,13 +14,9 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 # Load the pickled model
 pickle_in = open("decision_model.pkl","rb")
 model=pickle.load(pickle_in)
-dataset= pd.read_csv('Social_Network_Ads.csv')
-X = dataset.iloc[:, [2, 3]].values
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-X = sc.fit_transform(X)
+
 def predict_note_authentication(UserID, Gender,Age,EstimatedSalary):
-  output= model.predict(sc.transform([[Age,EstimatedSalary]]))
+  output= model.predict([[Age,EstimatedSalary]])
   print("Purchased", output)
   if output==[1]:
     prediction="Item will be purchased"
@@ -34,9 +30,9 @@ def main():
    <div class="" style="background-color:blue;" >
    <div class="clearfix">           
    <div class="col-md-12">
-   <center><p style="font-size:40px;color:white;margin-top:10px;">Poornima Institute of Engineering & Technology</p></center> 
-   <center><p style="font-size:30px;color:white;margin-top:10px;">Department of Computer Engineering</p></center> 
-   <center><p style="font-size:25px;color:white;margin-top:10px;">Deep Lab Experiment Deployment</p></center> 
+   <center><p style="font-size:40px;color:white;margin-top:10px;">Session on Decision Tree</p></center> 
+   <center><p style="font-size:30px;color:white;margin-top:10px;">Machine Learning</p></center> 
+   <center><p style="font-size:25px;color:white;margin-top:10px;">Project Deployment</p></center> 
    </div>
    </div>
    </div>
@@ -52,7 +48,7 @@ def main():
       st.success('Model has predicted {}'.format(result))
     if st.button("About"):
       st.text("Developed by Deepak Moud")
-      st.text("Head , Department of Computer Engineering")
+      st.text("Trainer , Machine Learning")
 
 if __name__=='__main__':
   main()
